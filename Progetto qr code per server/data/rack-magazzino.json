@@ -1,0 +1,188 @@
+{
+  "rack": {
+    "id": "rack-fwa",
+    "nome": "Rack Secondario / Magazzino FWA",
+    "descrizione": "Rack del magazzino con antenna FWA EOLO, telecamere, access point e domotica.",
+    "posizione": "Magazzino",
+    "dimensioni": {
+      "larghezza": 60,
+      "profondita": 50,
+      "altezza": 80
+    },
+    "ultimoAggiornamento": "2026-08-15"
+  },
+  "layout": [
+    {
+      "type": "fans",
+      "name": "Ventole di raffreddamento",
+      "quantita": 2
+    },
+    {
+      "type": "pdu",
+      "device": "pdu-fwa"
+    },
+    {
+      "type": "patchPanel",
+      "component": "pp-magazzino"
+    },
+    {
+      "type": "switch",
+      "component": "switch-tlc"
+    },
+    {
+      "type": "shelf",
+      "name": "Ripiano apparati · FWA + rete/AP",
+      "items": [
+        {
+          "type": "device",
+          "id": "injector-fwa"
+        },
+        {
+          "type": "switch",
+          "component": "switch-rete-ap"
+        }
+      ]
+    },
+    {
+      "type": "device",
+      "device": "ups-fwa"
+    },
+    {
+      "type": "device",
+      "device": "domotica-esp32"
+    }
+  ],
+  "apparati": [
+    {
+      "id": "pdu-fwa",
+      "nome": "PDU · 6 prese sotto UPS",
+      "tipo": "pdu",
+      "numeroPrese": 6,
+      "descrizione": "Distribuzione elettrica degli apparati del Rack Secondario.",
+      "prese": [
+        { "id": "PDU-FWA-01", "numero": 1, "stato": "non specificato" },
+        { "id": "PDU-FWA-02", "numero": 2, "stato": "non specificato" },
+        { "id": "PDU-FWA-03", "numero": 3, "stato": "non specificato" },
+        { "id": "PDU-FWA-04", "numero": 4, "stato": "non specificato" },
+        { "id": "PDU-FWA-05", "numero": 5, "stato": "non specificato" },
+        { "id": "PDU-FWA-06", "numero": 6, "stato": "non specificato" }
+      ]
+    },
+    {
+      "id": "injector-fwa",
+      "nome": "Alimentatore / PoE injector FWA EOLO",
+      "tipo": "poe-injector",
+      "descrizione": "Alimenta l'antenna FWA EOLO e collega il lato LAN al patch panel.",
+      "connessioni": [
+        {
+          "porta": "Uscita PoE",
+          "collegamentoId": "MAG-03",
+          "destinazione": "Patch panel porta 3 · FWA EOLO"
+        },
+        {
+          "porta": "Porta LAN",
+          "collegamentoId": "MAG-15",
+          "destinazione": "Patch panel porta 15 · FWA/LAN"
+        }
+      ]
+    },
+    {
+      "id": "ups-fwa",
+      "nome": "UPS Rack Secondario",
+      "tipo": "ups",
+      "descrizione": "Piccolo UPS che alimenta e protegge gli apparati del rack."
+    },
+    {
+      "id": "domotica-esp32",
+      "nome": "Domotica basculanti / raffreddamento · ESP32",
+      "tipo": "controller",
+      "descrizione": "Gestione di 4 basculanti, raffreddamento del rack e integrazione con Home Assistant.",
+      "connessioneRete": "Da specificare",
+      "note": "La connessione di rete/Home Assistant non è stata ancora documentata."
+    }
+  ],
+  "patchPanels": [
+    {
+      "id": "pp-magazzino",
+      "nome": "Patch Panel Magazzino · 16 porte",
+      "numeroPorte": 16,
+      "porte": [
+        { "id": "PPMAG-01", "numero": 1, "collegamentoId": "MAG-01", "stato": "free" },
+        { "id": "PPMAG-02", "numero": 2, "collegamentoId": "MAG-02", "stato": "free" },
+        { "id": "PPMAG-03", "numero": 3, "collegamentoId": "MAG-03", "stato": "used" },
+        { "id": "PPMAG-04", "numero": 4, "collegamentoId": "MAG-04", "stato": "used" },
+        { "id": "PPMAG-05", "numero": 5, "collegamentoId": "MAG-05", "stato": "used" },
+        { "id": "PPMAG-06", "numero": 6, "collegamentoId": "MAG-06", "stato": "used" },
+        { "id": "PPMAG-07", "numero": 7, "collegamentoId": "MAG-07", "stato": "used" },
+        { "id": "PPMAG-08", "numero": 8, "collegamentoId": "MAG-08", "stato": "used" },
+        { "id": "PPMAG-09", "numero": 9, "collegamentoId": "MAG-09", "stato": "used" },
+        { "id": "PPMAG-10", "numero": 10, "collegamentoId": "MAG-10", "stato": "used" },
+        { "id": "PPMAG-11", "numero": 11, "collegamentoId": "MAG-11", "stato": "used" },
+        { "id": "PPMAG-12", "numero": 12, "collegamentoId": "MAG-12", "stato": "used" },
+        { "id": "PPMAG-13", "numero": 13, "collegamentoId": "MAG-13", "stato": "used" },
+        { "id": "PPMAG-14", "numero": 14, "collegamentoId": "MAG-14", "stato": "used" },
+        { "id": "PPMAG-15", "numero": 15, "collegamentoId": "MAG-15", "stato": "used" },
+        { "id": "PPMAG-16", "numero": 16, "collegamentoId": "MAG-16", "stato": "used" }
+      ]
+    }
+  ],
+  "switches": [
+    {
+      "id": "switch-tlc",
+      "nome": "Switch PoE Telecamere · 8 porte",
+      "numeroPorte": 8,
+      "poe": true,
+      "descrizione": "Switch dedicato alle telecamere e al collegamento LAN TLC.",
+      "avviso": "Le connessioni MAG-04, MAG-05, MAG-06, MAG-07, MAG-08 e MAG-12 appartengono a questo switch; i numeri delle porte switch sono da rilevare.",
+      "porte": [
+        { "id": "SWTLC-01", "numero": 1, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-02", "numero": 2, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-03", "numero": 3, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-04", "numero": 4, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-05", "numero": 5, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-06", "numero": 6, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-07", "numero": 7, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" },
+        { "id": "SWTLC-08", "numero": 8, "tipo": "RJ45", "stato": "unknown", "note": "Associazione da specificare" }
+      ]
+    },
+    {
+      "id": "switch-rete-ap",
+      "nome": "Switch rete/AP · 8 porte / 4 PoE",
+      "numeroPorte": 8,
+      "numeroPortePoe": 4,
+      "poe": true,
+      "descrizione": "4 porte PoE e 4 porte LAN; corrispondenza numerica da rilevare.",
+      "avviso": "Gli AP MAG-09, MAG-10 e MAG-11 usano porte PoE. MAG-16 usa una porta LAN. La numerazione fisica delle porte non è stata specificata.",
+      "porte": [
+        { "id": "SWAP-01", "numero": 1, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-02", "numero": 2, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-03", "numero": 3, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-04", "numero": 4, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-05", "numero": 5, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-06", "numero": 6, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-07", "numero": 7, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" },
+        { "id": "SWAP-08", "numero": 8, "tipo": "RJ45", "stato": "unknown", "note": "Funzione PoE/LAN e associazione da specificare" }
+      ]
+    }
+  ],
+  "collegamentiLogici": [
+    { "id": "MAG-01", "numeroLogico": 1, "gruppo": "magazzino", "destinazione": "Cavo 1 libero palo FWA", "patchPanel": "pp-magazzino", "portaFisica": 1, "stato": "free", "note": "Cavo libero sul palo FWA." },
+    { "id": "MAG-02", "numeroLogico": 2, "gruppo": "magazzino", "destinazione": "Cavo 3 libero palo FWA", "patchPanel": "pp-magazzino", "portaFisica": 2, "stato": "free", "note": "Cavo libero sul palo FWA." },
+    { "id": "MAG-03", "numeroLogico": 3, "gruppo": "magazzino", "destinazione": "FWA EOLO", "patchPanel": "pp-magazzino", "portaFisica": 3, "dispositivo": "Alimentatore / PoE injector FWA EOLO · uscita PoE", "poe": "SI", "stato": "used" },
+    { "id": "MAG-04", "numeroLogico": 4, "gruppo": "magazzino", "destinazione": "TLC", "patchPanel": "pp-magazzino", "portaFisica": 4, "switchId": "switch-tlc", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-05", "numeroLogico": 5, "gruppo": "magazzino", "destinazione": "TLC GARAGE", "patchPanel": "pp-magazzino", "portaFisica": 5, "switchId": "switch-tlc", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-06", "numeroLogico": 6, "gruppo": "magazzino", "destinazione": "TLC", "patchPanel": "pp-magazzino", "portaFisica": 6, "switchId": "switch-tlc", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-07", "numeroLogico": 7, "gruppo": "magazzino", "destinazione": "TLC", "patchPanel": "pp-magazzino", "portaFisica": 7, "switchId": "switch-tlc", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-08", "numeroLogico": 8, "gruppo": "magazzino", "destinazione": "TLC SUD/OVEST", "patchPanel": "pp-magazzino", "portaFisica": 8, "switchId": "switch-tlc", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-09", "numeroLogico": 9, "gruppo": "magazzino", "destinazione": "AP MAGAZZINO", "patchPanel": "pp-magazzino", "portaFisica": 9, "switchId": "switch-rete-ap", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-10", "numeroLogico": 10, "gruppo": "magazzino", "destinazione": "AP CASA VECCHIA", "patchPanel": "pp-magazzino", "portaFisica": 10, "switchId": "switch-rete-ap", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-11", "numeroLogico": 11, "gruppo": "magazzino", "destinazione": "AP GARAGE", "patchPanel": "pp-magazzino", "portaFisica": 11, "switchId": "switch-rete-ap", "portaSwitch": null, "poe": "SI", "stato": "used" },
+    { "id": "MAG-12", "numeroLogico": 12, "gruppo": "magazzino", "destinazione": "TLC LAN/FIBRA", "patchPanel": "pp-magazzino", "portaFisica": 12, "switchId": "switch-tlc", "portaSwitch": null, "stato": "used", "note": "Collegamento LAN TLC; porta switch da specificare." },
+    { "id": "MAG-13", "numeroLogico": 13, "gruppo": "magazzino", "destinazione": "Tavolo magazzino 1", "patchPanel": "pp-magazzino", "portaFisica": 13, "stato": "used" },
+    { "id": "MAG-14", "numeroLogico": 14, "gruppo": "magazzino", "destinazione": "Tavolo magazzino 2", "patchPanel": "pp-magazzino", "portaFisica": 14, "stato": "used" },
+    { "id": "MAG-15", "numeroLogico": 15, "gruppo": "magazzino", "destinazione": "FWA/LAN", "patchPanel": "pp-magazzino", "portaFisica": 15, "dispositivo": "Alimentatore / PoE injector FWA EOLO · porta LAN", "stato": "used" },
+    { "id": "MAG-16", "numeroLogico": 16, "gruppo": "magazzino", "destinazione": "LAN Magazzino", "patchPanel": "pp-magazzino", "portaFisica": 16, "switchId": "switch-rete-ap", "portaSwitch": null, "stato": "used", "note": "Collegamento LAN dei capannoni/magazzino; porta switch da specificare." }
+  ],
+  "connessioni": [],
+  "collegamentiEsterni": []
+}

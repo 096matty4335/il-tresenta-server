@@ -1,0 +1,242 @@
+{
+  "rack": {
+    "id": "rack-principale",
+    "nome": "Rack Principale",
+    "descrizione": "Armadio principale con distribuzione rete, videosorveglianza, apparati di servizio e alimentazione protetta.",
+    "posizione": "Abitazione · Locale tecnico",
+    "dimensioni": { "larghezza": 60, "profondita": 60, "altezza": 190 },
+    "ultimoAggiornamento": "2026-08-15"
+  },
+  "layout": [
+    { "type": "fans", "name": "Ventole Rack" },
+    { "type": "patchPanel", "component": "pp1" },
+    { "type": "cableManager", "name": "Passacavi" },
+    { "type": "patchPanel", "component": "pp2" },
+    { "type": "shelf", "name": "Ripiano Archivio + Router", "devices": ["archivio", "router"] },
+    { "type": "switch", "component": "switch-1" },
+    { "type": "cableManager", "name": "Passacavi" },
+    { "type": "cableManager", "name": "Passacavi" },
+    { "type": "switch", "component": "switch-2" },
+    { "type": "switch", "component": "switch-poe-omada" },
+    { "type": "patchPanel", "component": "pp-tlc" },
+    { "type": "device", "device": "nvr" },
+    { "type": "pdu", "device": "pdu-ups" },
+    { "type": "shelf", "name": "Ripiano Monitor manutenzione", "devices": ["monitor-manutenzione"] },
+    { "type": "shelf", "name": "Ripiano inferiore", "devices": ["home-assistant", "ups", "server"] }
+  ],
+  "configurazioneConnessioni": {
+    "rete": {
+      "tutteCollegateASwitch": true,
+      "porteSwitchDocumentate": false,
+      "note": "Tutte le connessioni RETE sono collegate agli switch. Salvo le assegnazioni note, la distribuzione tra switch e porte non è ancora documentata."
+    }
+  },
+  "apparati": [
+    { "id": "archivio", "nome": "Archivio", "tipo": "storage", "descrizione": "Archivio appoggiato sul ripiano con il router.", "note": "Associabile al collegamento RETE-36." },
+    { "id": "router", "nome": "Router", "tipo": "router", "descrizione": "Router appoggiato sul ripiano superiore.", "note": "Collegamenti documentati: RETE-38 WAN, RETE-39 LAN 1, RETE-40 LAN 2, RETE-41 LAN 3." },
+    { "id": "nvr", "nome": "NVR", "tipo": "nvr", "descrizione": "Apparato dedicato alla videosorveglianza.", "note": "Dati di rete non ancora specificati." },
+    {
+      "id": "pdu-ups", "nome": "PDU · 16 prese elettriche sotto UPS", "tipo": "pdu", "numeroPrese": 16,
+      "descrizione": "Blocco di 16 prese elettriche alimentate sotto UPS.",
+      "note": "I dispositivi alimentati non sono ancora specificati.",
+      "prese": [
+        { "id": "PDU-01", "numero": 1, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-02", "numero": 2, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-03", "numero": 3, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-04", "numero": 4, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-05", "numero": 5, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-06", "numero": 6, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-07", "numero": 7, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-08", "numero": 8, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-09", "numero": 9, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-10", "numero": 10, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-11", "numero": 11, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-12", "numero": 12, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-13", "numero": 13, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-14", "numero": 14, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-15", "numero": 15, "stato": "non specificato", "dispositivo": "", "note": "" },
+        { "id": "PDU-16", "numero": 16, "stato": "non specificato", "dispositivo": "", "note": "" }
+      ]
+    },
+    { "id": "monitor-manutenzione", "nome": "Monitor manutenzione", "tipo": "monitor", "descrizione": "Monitor utilizzato per la manutenzione di Server e Home Assistant.", "note": "" },
+    { "id": "home-assistant", "nome": "Home Assistant", "tipo": "controller", "descrizione": "Home Assistant sul ripiano inferiore.", "note": "Associabile al collegamento RETE-37." },
+    { "id": "ups", "nome": "UPS", "tipo": "ups", "descrizione": "UPS sul ripiano inferiore.", "note": "Apparato di alimentazione; associabile al collegamento RETE-35." },
+    { "id": "server", "nome": "Server", "tipo": "server", "descrizione": "Server sul ripiano inferiore.", "note": "Predisposto per i collegamenti RETE-43 e RETE-44." }
+  ],
+  "patchPanels": [
+    {
+      "id": "pp1", "nome": "Patch Panel 1 · Rete 1-24", "numeroPorte": 24, "categoria": "RJ45",
+      "porte": [
+        { "id": "PP1-01", "numero": 1, "collegamentoId": "RETE-01", "stato": "used" },
+        { "id": "PP1-02", "numero": 2, "collegamentoId": "RETE-02", "stato": "used" },
+        { "id": "PP1-03", "numero": 3, "collegamentoId": "RETE-03", "stato": "used" },
+        { "id": "PP1-04", "numero": 4, "collegamentoId": "RETE-04", "stato": "used" },
+        { "id": "PP1-05", "numero": 5, "collegamentoId": "RETE-05", "stato": "used" },
+        { "id": "PP1-06", "numero": 6, "collegamentoId": "RETE-06", "stato": "used" },
+        { "id": "PP1-07", "numero": 7, "collegamentoId": "RETE-07", "stato": "used" },
+        { "id": "PP1-08", "numero": 8, "collegamentoId": "RETE-08", "stato": "used" },
+        { "id": "PP1-09", "numero": 9, "collegamentoId": "RETE-09", "stato": "used" },
+        { "id": "PP1-10", "numero": 10, "collegamentoId": "RETE-10", "stato": "used" },
+        { "id": "PP1-11", "numero": 11, "collegamentoId": "RETE-11", "stato": "used" },
+        { "id": "PP1-12", "numero": 12, "collegamentoId": "RETE-12", "stato": "used" },
+        { "id": "PP1-13", "numero": 13, "collegamentoId": "RETE-13", "stato": "used" },
+        { "id": "PP1-14", "numero": 14, "collegamentoId": "RETE-14", "stato": "used" },
+        { "id": "PP1-15", "numero": 15, "collegamentoId": "RETE-15", "stato": "used" },
+        { "id": "PP1-16", "numero": 16, "collegamentoId": "RETE-16", "stato": "used" },
+        { "id": "PP1-17", "numero": 17, "collegamentoId": "RETE-17", "stato": "used" },
+        { "id": "PP1-18", "numero": 18, "collegamentoId": "RETE-18", "stato": "used" },
+        { "id": "PP1-19", "numero": 19, "collegamentoId": "RETE-19", "stato": "used" },
+        { "id": "PP1-20", "numero": 20, "collegamentoId": "RETE-20", "stato": "used" },
+        { "id": "PP1-21", "numero": 21, "collegamentoId": "RETE-21", "stato": "used" },
+        { "id": "PP1-22", "numero": 22, "collegamentoId": "RETE-22", "stato": "used" },
+        { "id": "PP1-23", "numero": 23, "collegamentoId": "RETE-23", "stato": "used" },
+        { "id": "PP1-24", "numero": 24, "collegamentoId": "RETE-24", "stato": "used" }
+      ]
+    },
+    {
+      "id": "pp2", "nome": "Patch Panel 2 · Rete 25-48", "numeroPorte": 24, "categoria": "RJ45",
+      "porte": [
+        { "id": "PP2-25", "numero": 25, "collegamentoId": "RETE-25", "stato": "used" },
+        { "id": "PP2-26", "numero": 26, "riferimentoMigrato": "RETE-26", "stato": "unavailable", "note": "Posizione vuota. Collegamento migrato al Patch Panel Telecamere." },
+        { "id": "PP2-27", "numero": 27, "collegamentoId": "RETE-27", "stato": "used" },
+        { "id": "PP2-28", "numero": 28, "collegamentoId": "RETE-28", "stato": "used" },
+        { "id": "PP2-29", "numero": 29, "collegamentoId": "RETE-29", "stato": "used" },
+        { "id": "PP2-30", "numero": 30, "collegamentoId": "RETE-30", "stato": "used" },
+        { "id": "PP2-31", "numero": 31, "collegamentoId": "RETE-31", "stato": "used" },
+        { "id": "PP2-32", "numero": 32, "collegamentoId": "RETE-32", "stato": "used" },
+        { "id": "PP2-33", "numero": 33, "collegamentoId": "RETE-33", "stato": "used" },
+        { "id": "PP2-34", "numero": 34, "collegamentoId": "RETE-34", "stato": "used" },
+        { "id": "PP2-35", "numero": 35, "collegamentoId": "RETE-35", "stato": "used" },
+        { "id": "PP2-36", "numero": 36, "collegamentoId": "RETE-36", "stato": "used" },
+        { "id": "PP2-37", "numero": 37, "collegamentoId": "RETE-37", "stato": "used" },
+        { "id": "PP2-38", "numero": 38, "collegamentoId": "RETE-38", "stato": "used" },
+        { "id": "PP2-39", "numero": 39, "collegamentoId": "RETE-39", "stato": "used" },
+        { "id": "PP2-40", "numero": 40, "collegamentoId": "RETE-40", "stato": "used" },
+        { "id": "PP2-41", "numero": 41, "collegamentoId": "RETE-41", "stato": "used" },
+        { "id": "PP2-42", "numero": 42, "collegamentoId": "RETE-42", "stato": "used" },
+        { "id": "PP2-43", "numero": 43, "collegamentoId": "RETE-43", "stato": "used" },
+        { "id": "PP2-44", "numero": 44, "collegamentoId": "RETE-44", "stato": "used" },
+        { "id": "PP2-45", "numero": 45, "collegamentoId": "RETE-45", "stato": "used" },
+        { "id": "PP2-46", "numero": 46, "collegamentoId": "RETE-46", "stato": "used" },
+        { "id": "PP2-47", "numero": 47, "stato": "free", "note": "Posizione libera." },
+        { "id": "PP2-48", "numero": 48, "stato": "free", "note": "Posizione libera." }
+      ]
+    },
+    {
+      "id": "pp-tlc", "nome": "Patch Panel Telecamere · Cavi TLC", "numeroPorte": 9, "categoria": "RJ45",
+      "collegamentiSenzaPosizione": ["RETE-26"],
+      "porte": [
+        { "id": "TLC-PHYS-01", "numero": 1, "collegamentoId": "TLC-01", "stato": "used" },
+        { "id": "TLC-PHYS-02", "numero": 2, "collegamentoId": "TLC-02", "stato": "used" },
+        { "id": "TLC-PHYS-03", "numero": 3, "collegamentoId": "TLC-03", "stato": "used" },
+        { "id": "TLC-PHYS-04", "numero": 4, "collegamentoId": "TLC-04", "stato": "used" },
+        { "id": "TLC-PHYS-05", "numero": 5, "collegamentoId": "TLC-05", "stato": "used" },
+        { "id": "TLC-PHYS-06", "numero": 6, "collegamentoId": "TLC-06", "stato": "used" },
+        { "id": "TLC-PHYS-07", "numero": 7, "collegamentoId": "TLC-07", "stato": "used" },
+        { "id": "TLC-PHYS-08", "numero": 8, "collegamentoId": "TLC-08", "stato": "used" },
+        { "id": "TLC-PHYS-09", "numero": 9, "collegamentoId": "TLC-09", "stato": "used" }
+      ]
+    }
+  ],
+  "switches": [
+    {
+      "id": "switch-1", "nome": "Switch 1 · 24 porte", "numeroPorte": 24,
+      "porte": [
+        { "id": "SW1-01", "numero": 1, "stato": "free", "poe": "" }, { "id": "SW1-02", "numero": 2, "stato": "free", "poe": "" },
+        { "id": "SW1-03", "numero": 3, "stato": "free", "poe": "" }, { "id": "SW1-04", "numero": 4, "stato": "free", "poe": "" },
+        { "id": "SW1-05", "numero": 5, "stato": "free", "poe": "" }, { "id": "SW1-06", "numero": 6, "stato": "free", "poe": "" },
+        { "id": "SW1-07", "numero": 7, "stato": "free", "poe": "" }, { "id": "SW1-08", "numero": 8, "stato": "free", "poe": "" },
+        { "id": "SW1-09", "numero": 9, "stato": "free", "poe": "" }, { "id": "SW1-10", "numero": 10, "stato": "free", "poe": "" },
+        { "id": "SW1-11", "numero": 11, "stato": "free", "poe": "" }, { "id": "SW1-12", "numero": 12, "stato": "free", "poe": "" },
+        { "id": "SW1-13", "numero": 13, "stato": "free", "poe": "" }, { "id": "SW1-14", "numero": 14, "stato": "free", "poe": "" },
+        { "id": "SW1-15", "numero": 15, "stato": "free", "poe": "" }, { "id": "SW1-16", "numero": 16, "stato": "free", "poe": "" },
+        { "id": "SW1-17", "numero": 17, "stato": "free", "poe": "" }, { "id": "SW1-18", "numero": 18, "stato": "free", "poe": "" },
+        { "id": "SW1-19", "numero": 19, "stato": "free", "poe": "" }, { "id": "SW1-20", "numero": 20, "stato": "free", "poe": "" },
+        { "id": "SW1-21", "numero": 21, "stato": "free", "poe": "" }, { "id": "SW1-22", "numero": 22, "stato": "free", "poe": "" },
+        { "id": "SW1-23", "numero": 23, "stato": "free", "poe": "" }, { "id": "SW1-24", "numero": 24, "stato": "free", "poe": "" }
+      ]
+    },
+    {
+      "id": "switch-2", "nome": "Switch 2 · 16 porte", "numeroPorte": 16,
+      "porte": [
+        { "id": "SW2-01", "numero": 1, "stato": "free", "poe": "" }, { "id": "SW2-02", "numero": 2, "stato": "free", "poe": "" },
+        { "id": "SW2-03", "numero": 3, "stato": "free", "poe": "" }, { "id": "SW2-04", "numero": 4, "stato": "free", "poe": "" },
+        { "id": "SW2-05", "numero": 5, "stato": "free", "poe": "" }, { "id": "SW2-06", "numero": 6, "stato": "free", "poe": "" },
+        { "id": "SW2-07", "numero": 7, "stato": "free", "poe": "" }, { "id": "SW2-08", "numero": 8, "stato": "free", "poe": "" },
+        { "id": "SW2-09", "numero": 9, "stato": "free", "poe": "" }, { "id": "SW2-10", "numero": 10, "stato": "free", "poe": "" },
+        { "id": "SW2-11", "numero": 11, "stato": "free", "poe": "" }, { "id": "SW2-12", "numero": 12, "stato": "free", "poe": "" },
+        { "id": "SW2-13", "numero": 13, "stato": "free", "poe": "" }, { "id": "SW2-14", "numero": 14, "stato": "free", "poe": "" },
+        { "id": "SW2-15", "numero": 15, "stato": "free", "poe": "" }, { "id": "SW2-16", "numero": 16, "stato": "free", "poe": "" }
+      ]
+    },
+    {
+      "id": "switch-poe-omada", "nome": "Switch PoE Omada · 8 porte", "numeroPorte": 8, "poe": true,
+      "note": "Dedicato principalmente agli Access Point Omada. Associazioni e stato PoE delle singole porte non ancora specificati.",
+      "porte": [
+        { "id": "OMADA-01", "numero": 1, "stato": "free", "poe": "" }, { "id": "OMADA-02", "numero": 2, "stato": "free", "poe": "" },
+        { "id": "OMADA-03", "numero": 3, "stato": "free", "poe": "" }, { "id": "OMADA-04", "numero": 4, "stato": "free", "poe": "" },
+        { "id": "OMADA-05", "numero": 5, "stato": "free", "poe": "" }, { "id": "OMADA-06", "numero": 6, "stato": "free", "poe": "" },
+        { "id": "OMADA-07", "numero": 7, "stato": "free", "poe": "" }, { "id": "OMADA-08", "numero": 8, "stato": "free", "poe": "" }
+      ]
+    }
+  ],
+  "collegamentiLogici": [
+    { "id": "RETE-01", "numeroLogico": 1, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 1, "posizioneOriginale": "PP1-01", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-02", "numeroLogico": 2, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 2, "posizioneOriginale": "PP1-02", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-03", "numeroLogico": 3, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 3, "posizioneOriginale": "PP1-03", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-04", "numeroLogico": 4, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 4, "posizioneOriginale": "PP1-04", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-05", "numeroLogico": 5, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 5, "posizioneOriginale": "PP1-05", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-06", "numeroLogico": 6, "gruppo": "rete", "destinazione": "Camera letto matrimoniale P1", "patchPanel": "pp1", "portaFisica": 6, "posizioneOriginale": "PP1-06", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-07", "numeroLogico": 7, "gruppo": "rete", "destinazione": "Access Point soggiorno P1", "patchPanel": "pp1", "portaFisica": 7, "posizioneOriginale": "PP1-07", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-08", "numeroLogico": 8, "gruppo": "rete", "destinazione": "Speaker Sonos lato frigo", "patchPanel": "pp1", "portaFisica": 8, "posizioneOriginale": "PP1-08", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-09", "numeroLogico": 9, "gruppo": "rete", "destinazione": "PC studio NEW", "patchPanel": "pp1", "portaFisica": 9, "posizioneOriginale": "PP1-09", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-10", "numeroLogico": 10, "gruppo": "rete", "destinazione": "PC studio NEW", "patchPanel": "pp1", "portaFisica": 10, "posizioneOriginale": "PP1-10", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-11", "numeroLogico": 11, "gruppo": "rete", "destinazione": "Speaker Sonos studio NEW", "patchPanel": "pp1", "portaFisica": 11, "posizioneOriginale": "PP1-11", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-12", "numeroLogico": 12, "gruppo": "rete", "destinazione": "Speaker Sonos lato cucina", "patchPanel": "pp1", "portaFisica": 12, "posizioneOriginale": "PP1-12", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-13", "numeroLogico": 13, "gruppo": "rete", "destinazione": "Speaker Sonos lato cucina", "patchPanel": "pp1", "portaFisica": 13, "posizioneOriginale": "PP1-13", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-14", "numeroLogico": 14, "gruppo": "rete", "destinazione": "Access Point corridoio P1", "patchPanel": "pp1", "portaFisica": 14, "posizioneOriginale": "PP1-14", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-15", "numeroLogico": 15, "gruppo": "rete", "destinazione": "Scrivania Mattia", "patchPanel": "pp1", "portaFisica": 15, "posizioneOriginale": "PP1-15", "migrato": false, "stato": "used", "switchId": "switch-1", "portaSwitch": null, "note": "Collegata allo Switch 1 da 24 porte; porta switch non ancora specificata." },
+    { "id": "RETE-16", "numeroLogico": 16, "gruppo": "rete", "destinazione": "Scrivania Mattia", "patchPanel": "pp1", "portaFisica": 16, "posizioneOriginale": "PP1-16", "migrato": false, "stato": "used", "switchId": "switch-2", "portaSwitch": null, "note": "Collegata allo Switch 2 da 16 porte; porta switch non ancora specificata." },
+    { "id": "RETE-17", "numeroLogico": 17, "gruppo": "rete", "destinazione": "Scrivania Mattia", "patchPanel": "pp1", "portaFisica": 17, "posizioneOriginale": "PP1-17", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-18", "numeroLogico": 18, "gruppo": "rete", "destinazione": "Scrivania Mattia", "patchPanel": "pp1", "portaFisica": 18, "posizioneOriginale": "PP1-18", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-19", "numeroLogico": 19, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 19, "posizioneOriginale": "PP1-19", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-20", "numeroLogico": 20, "gruppo": "rete", "destinazione": "TV salotto P1", "patchPanel": "pp1", "portaFisica": 20, "posizioneOriginale": "PP1-20", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-21", "numeroLogico": 21, "gruppo": "rete", "destinazione": "Access Point veranda", "patchPanel": "pp1", "portaFisica": 21, "posizioneOriginale": "PP1-21", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-22", "numeroLogico": 22, "gruppo": "rete", "destinazione": "Access Point corridoio PT", "patchPanel": "pp1", "portaFisica": 22, "posizioneOriginale": "PP1-22", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-23", "numeroLogico": 23, "gruppo": "rete", "destinazione": "Scrivania Samu", "patchPanel": "pp1", "portaFisica": 23, "posizioneOriginale": "PP1-23", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-24", "numeroLogico": 24, "gruppo": "rete", "destinazione": "Scrivania Samu", "patchPanel": "pp1", "portaFisica": 24, "posizioneOriginale": "PP1-24", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-25", "numeroLogico": 25, "gruppo": "rete", "destinazione": "Access Point cucina PT", "patchPanel": "pp2", "portaFisica": 25, "posizioneOriginale": "PP2-25", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-26", "numeroLogico": 26, "gruppo": "rete", "destinazione": "Schermo TLC", "patchPanel": "pp-tlc", "portaFisica": null, "posizioneOriginale": "PP2-26", "migrato": true, "stato": "used", "note": "Collegamento migrato dal Patch Panel 2 al Patch Panel Telecamere. Porta fisica attuale non ancora specificata." },
+    { "id": "RETE-27", "numeroLogico": 27, "gruppo": "rete", "destinazione": "Scrivania studio", "patchPanel": "pp2", "portaFisica": 27, "posizioneOriginale": "PP2-27", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-28", "numeroLogico": 28, "gruppo": "rete", "destinazione": "Scrivania studio", "patchPanel": "pp2", "portaFisica": 28, "posizioneOriginale": "PP2-28", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-29", "numeroLogico": 29, "gruppo": "rete", "destinazione": "Scrivania studio", "patchPanel": "pp2", "portaFisica": 29, "posizioneOriginale": "PP2-29", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-30", "numeroLogico": 30, "gruppo": "rete", "destinazione": "TV studio", "patchPanel": "pp2", "portaFisica": 30, "posizioneOriginale": "PP2-30", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-31", "numeroLogico": 31, "gruppo": "rete", "destinazione": "Scatola fibra ottica", "patchPanel": "pp2", "portaFisica": 31, "posizioneOriginale": "PP2-31", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-32", "numeroLogico": 32, "gruppo": "rete", "destinazione": "Scatola fibra ottica", "patchPanel": "pp2", "portaFisica": 32, "posizioneOriginale": "PP2-32", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-33", "numeroLogico": 33, "gruppo": "rete", "destinazione": "Scatola fibra ottica", "patchPanel": "pp2", "portaFisica": 33, "posizioneOriginale": "PP2-33", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-34", "numeroLogico": 34, "gruppo": "rete", "destinazione": "Scatola fibra ottica", "patchPanel": "pp2", "portaFisica": 34, "posizioneOriginale": "PP2-34", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-35", "numeroLogico": 35, "gruppo": "rete", "destinazione": "UPS", "patchPanel": "pp2", "portaFisica": 35, "posizioneOriginale": "PP2-35", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-36", "numeroLogico": 36, "gruppo": "rete", "destinazione": "Archivio", "patchPanel": "pp2", "portaFisica": 36, "posizioneOriginale": "PP2-36", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-37", "numeroLogico": 37, "gruppo": "rete", "destinazione": "Home Assistant", "patchPanel": "pp2", "portaFisica": 37, "posizioneOriginale": "PP2-37", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-38", "numeroLogico": 38, "gruppo": "rete", "destinazione": "WAN Router", "patchPanel": "pp2", "portaFisica": 38, "posizioneOriginale": "PP2-38", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-39", "numeroLogico": 39, "gruppo": "rete", "destinazione": "LAN 1 Router", "patchPanel": "pp2", "portaFisica": 39, "posizioneOriginale": "PP2-39", "migrato": false, "stato": "used", "switchId": "switch-1", "portaSwitch": null, "note": "LAN 1 Router collegata allo Switch 1 da 24 porte; porta switch non ancora specificata." },
+    { "id": "RETE-40", "numeroLogico": 40, "gruppo": "rete", "destinazione": "LAN 2 Router", "patchPanel": "pp2", "portaFisica": 40, "posizioneOriginale": "PP2-40", "migrato": false, "stato": "used", "switchId": "switch-2", "portaSwitch": null, "note": "LAN 2 Router collegata allo Switch 2 da 16 porte; porta switch non ancora specificata." },
+    { "id": "RETE-41", "numeroLogico": 41, "gruppo": "rete", "destinazione": "LAN 3 Router", "patchPanel": "pp2", "portaFisica": 41, "posizioneOriginale": "PP2-41", "migrato": false, "stato": "used", "switchId": "switch-poe-omada", "portaSwitch": null, "note": "LAN 3 Router collegata allo Switch PoE Omada da 8 porte; porta switch non ancora specificata." },
+    { "id": "RETE-42", "numeroLogico": 42, "gruppo": "rete", "destinazione": "NVR", "patchPanel": "pp2", "portaFisica": 42, "posizioneOriginale": "PP2-42", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-43", "numeroLogico": 43, "gruppo": "rete", "destinazione": "SERVER 1", "patchPanel": "pp2", "portaFisica": 43, "posizioneOriginale": "PP2-43", "migrato": false, "stato": "used", "switchId": "switch-1", "portaSwitch": null, "note": "Server 1 collegato allo Switch 1 da 24 porte; porta switch non ancora specificata." },
+    { "id": "RETE-44", "numeroLogico": 44, "gruppo": "rete", "destinazione": "SERVER 2", "patchPanel": "pp2", "portaFisica": 44, "posizioneOriginale": "PP2-44", "migrato": false, "stato": "used", "switchId": "switch-2", "portaSwitch": null, "note": "Server 2 collegato allo Switch 2 da 16 porte; porta switch non ancora specificata." },
+    { "id": "RETE-45", "numeroLogico": 45, "gruppo": "rete", "destinazione": "KC868 A32 piano terra SLAVE", "patchPanel": "pp2", "portaFisica": 45, "posizioneOriginale": "PP2-45", "migrato": false, "stato": "used", "note": "" },
+    { "id": "RETE-46", "numeroLogico": 46, "gruppo": "rete", "destinazione": "KC868 A32 primo piano MASTER", "patchPanel": "pp2", "portaFisica": 46, "posizioneOriginale": "PP2-46", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-01", "numeroLogico": 1, "gruppo": "telecamere", "destinazione": "TLC Cancello", "patchPanel": "pp-tlc", "portaFisica": 1, "posizioneOriginale": "PP-TLC-01", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-02", "numeroLogico": 2, "gruppo": "telecamere", "destinazione": "TLC Balcone SUD", "patchPanel": "pp-tlc", "portaFisica": 2, "posizioneOriginale": "PP-TLC-02", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-03", "numeroLogico": 3, "gruppo": "telecamere", "destinazione": "TLC piano terra EST", "patchPanel": "pp-tlc", "portaFisica": 3, "posizioneOriginale": "PP-TLC-03", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-04", "numeroLogico": 4, "gruppo": "telecamere", "destinazione": "TLC Balcone OVEST", "patchPanel": "pp-tlc", "portaFisica": 4, "posizioneOriginale": "PP-TLC-04", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-05", "numeroLogico": 5, "gruppo": "telecamere", "destinazione": "TLC Primo piano EST", "patchPanel": "pp-tlc", "portaFisica": 5, "posizioneOriginale": "PP-TLC-05", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-06", "numeroLogico": 6, "gruppo": "telecamere", "destinazione": "TLC piano terra OVEST", "patchPanel": "pp-tlc", "portaFisica": 6, "posizioneOriginale": "PP-TLC-06", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-07", "numeroLogico": 7, "gruppo": "telecamere", "destinazione": "TLC piano terra NORD", "patchPanel": "pp-tlc", "portaFisica": 7, "posizioneOriginale": "PP-TLC-07", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-08", "numeroLogico": 8, "gruppo": "telecamere", "destinazione": "TLC Veranda SUD", "patchPanel": "pp-tlc", "portaFisica": 8, "posizioneOriginale": "PP-TLC-08", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-09", "numeroLogico": 9, "gruppo": "telecamere", "destinazione": "Monitor piano terra NVR", "patchPanel": "pp-tlc", "portaFisica": 9, "posizioneOriginale": "PP-TLC-09", "migrato": false, "stato": "used", "note": "" }
+  ],
+  "connessioni": [],
+  "collegamentiEsterni": []
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071019">
+  <meta name="description" content="Documentazione dei rack e delle connessioni di rete">
+  <title>Home rete</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <header class="site-header home-header">
+    <div class="header-inner">
+      <div class="brand-mark" aria-hidden="true">⌁</div>
+      <div>
+        <p class="eyebrow">Inventario infrastruttura</p>
+        <h1>Home rete</h1>
+        <p class="header-copy">Scegli un rack per consultarne apparati, porte e collegamenti.</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenuto" class="page-shell">
+    <section aria-labelledby="rack-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Armadi disponibili</p>
+          <h2 id="rack-heading">Rack di rete</h2>
+        </div>
+        <span id="rack-count" class="count-badge" aria-live="polite"></span>
+      </div>
+
+      <div id="home-status" class="status-message" role="status">Caricamento rack…</div>
+      <div id="rack-list" class="rack-card-grid" aria-live="polite"></div>
+    </section>
+
+    <noscript>
+      <div class="alert alert-error">Per visualizzare i rack è necessario abilitare JavaScript.</div>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <p>Documentazione rete · I dati vengono letti dai file JSON del progetto.</p>
+  </footer>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

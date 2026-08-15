@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071019">
+  <meta name="description" content="Vista e documentazione del rack di rete">
+  <title>Rack di rete</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="rack-page">
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <header class="rack-toolbar">
+    <nav class="toolbar-inner" aria-label="Navigazione rack">
+      <a class="button button-ghost" href="index.html" aria-label="Torna alla home">← <span>Home</span></a>
+      <div class="toolbar-title">
+        <span class="eyebrow">Vista rack</span>
+        <strong id="nav-rack-name">Caricamento…</strong>
+      </div>
+      <div class="toolbar-actions">
+        <a class="button button-ghost" href="#ricerca">⌕ <span>Ricerca</span></a>
+        <a class="button button-ghost" href="#tabella-prese">▦ <span>Tabella</span></a>
+        <button id="info-button" class="button button-ghost" type="button">ⓘ <span>Info</span></button>
+        <button id="print-button" class="button button-primary" type="button">⎙ <span>Stampa</span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenuto" class="page-shell rack-main">
+    <div id="page-status" class="status-message" role="status">Caricamento dati del rack…</div>
+    <div id="page-error" class="alert alert-error" role="alert" hidden></div>
+
+    <div id="rack-content" hidden>
+      <section class="rack-hero" aria-labelledby="rack-title">
+        <div>
+          <p class="eyebrow">Armadio di rete</p>
+          <h1 id="rack-title"></h1>
+          <p id="rack-description" class="header-copy"></p>
+        </div>
+        <dl class="rack-facts">
+          <div><dt>Posizione</dt><dd id="rack-location"></dd></div>
+          <div><dt id="rack-size-label">Capacità</dt><dd id="rack-units"></dd></div>
+          <div><dt>Ultimo aggiornamento</dt><dd id="rack-updated"></dd></div>
+        </dl>
+      </section>
+
+      <section id="ricerca" class="control-panel" aria-labelledby="search-heading">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Trova una connessione</p>
+            <h2 id="search-heading">Ricerca e filtri</h2>
+          </div>
+          <button id="reset-filters" class="button button-ghost" type="button">Azzera filtri</button>
+        </div>
+        <label class="search-field">
+          <span class="sr-only">Cerca in tutti i dati</span>
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" autocomplete="off" placeholder="Garage, EAP610, PP1-12, VLAN 20, IP…">
+        </label>
+        <div class="filter-grid">
+          <label>Stanza / destinazione<select id="filter-room"><option value="">Tutte</option></select></label>
+          <label>Dispositivo<select id="filter-device"><option value="">Tutti</option></select></label>
+          <label>VLAN<select id="filter-vlan"><option value="">Tutte</option></select></label>
+          <label>PoE<select id="filter-poe"><option value="">Tutti</option><option value="si">Sì</option><option value="no">No</option></select></label>
+          <label>Stato<select id="filter-status"><option value="">Tutti</option></select></label>
+          <label>Switch<select id="filter-switch"><option value="">Tutti</option></select></label>
+        </div>
+        <p id="filter-result" class="result-count" aria-live="polite"></p>
+      </section>
+
+      <div id="data-warnings" class="alert alert-warning" hidden></div>
+
+      <section class="rack-section" aria-labelledby="front-view-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Disposizione fisica</p>
+            <h2 id="front-view-heading">Vista frontale</h2>
+          </div>
+          <span class="touch-hint">Tocca una porta per i dettagli</span>
+        </div>
+        <div class="rack-scroll" tabindex="0" aria-label="Rack scorrevole orizzontalmente">
+          <div id="rack-frame" class="rack-frame"></div>
+        </div>
+        <div id="port-legend" class="legend" aria-label="Legenda stati porte"></div>
+      </section>
+
+      <section id="external-links-section" class="connections-section" aria-labelledby="external-links-heading" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Fibra e dorsali</p>
+            <h2 id="external-links-heading">Collegamenti tra rack</h2>
+          </div>
+        </div>
+        <div id="external-links" class="connection-grid"></div>
+      </section>
+
+      <section id="tabella-prese" class="table-section" aria-labelledby="table-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Mappatura completa</p>
+            <h2 id="table-heading">Tabella prese</h2>
+          </div>
+          <span id="table-count" class="count-badge"></span>
+        </div>
+        <div class="table-wrap" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th>Porta logica</th><th>Destinazione</th><th>Presa / posizione</th><th>Switch</th>
+                <th>Porta switch</th><th>Dispositivo</th><th>PoE</th><th>VLAN</th>
+                <th>IP</th><th>Stato</th><th>Note</th>
+              </tr>
+            </thead>
+            <tbody id="outlet-table-body"></tbody>
+          </table>
+          <p id="empty-table" class="empty-state" hidden>Nessuna presa corrisponde alla ricerca.</p>
+        </div>
+      </section>
+
+      <section class="print-summary" aria-labelledby="print-equipment-heading">
+        <h2 id="print-equipment-heading">Apparati principali</h2>
+        <ul id="print-equipment"></ul>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="detail-dialog" class="detail-dialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-header">
+        <div><p id="dialog-kicker" class="eyebrow"></p><h2 id="dialog-title"></h2></div>
+        <button class="icon-button" value="close" aria-label="Chiudi finestra">×</button>
+      </div>
+      <div id="dialog-content" class="dialog-content"></div>
+      <div class="dialog-footer"><button class="button button-primary" value="close">Chiudi</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="info-dialog" class="detail-dialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-header">
+        <div><p class="eyebrow">Informazioni</p><h2>Come usare questa pagina</h2></div>
+        <button class="icon-button" value="close" aria-label="Chiudi finestra">×</button>
+      </div>
+      <div class="dialog-content prose">
+        <p>Tocca una porta del patch panel o dello switch per vedere tutti i dettagli. Se esiste un collegamento, anche la porta corrispondente viene evidenziata.</p>
+        <p>La ricerca controlla tutte le informazioni delle prese. I filtri possono essere combinati; il pulsante “Azzera filtri” ripristina la vista completa.</p>
+        <p>Il pulsante “Stampa” produce una versione pulita, utilizzabile anche con “Salva come PDF” nel browser.</p>
+      </div>
+      <div class="dialog-footer"><button class="button button-primary" value="close">Chiudi</button></div>
+    </form>
+  </dialog>
+
+  <script src="js/rack.js" defer></script>
+</body>
+</html>
