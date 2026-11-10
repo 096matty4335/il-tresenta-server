@@ -5,7 +5,7 @@
     "descrizione": "Armadio principale con distribuzione rete, videosorveglianza, apparati di servizio e alimentazione protetta.",
     "posizione": "Abitazione · Locale tecnico",
     "dimensioni": { "larghezza": 60, "profondita": 60, "altezza": 190 },
-    "ultimoAggiornamento": "2026-08-15"
+    "ultimoAggiornamento": "2026-11-10"
   },
   "layout": [
     { "type": "fans", "name": "Ventole Rack" },
@@ -227,15 +227,15 @@
     { "id": "RETE-44", "numeroLogico": 44, "gruppo": "rete", "destinazione": "SERVER 2", "patchPanel": "pp2", "portaFisica": 44, "posizioneOriginale": "PP2-44", "migrato": false, "stato": "used", "switchId": "switch-2", "portaSwitch": null, "note": "Server 2 collegato allo Switch 2 da 16 porte; porta switch non ancora specificata." },
     { "id": "RETE-45", "numeroLogico": 45, "gruppo": "rete", "destinazione": "KC868 A32 piano terra SLAVE", "patchPanel": "pp2", "portaFisica": 45, "posizioneOriginale": "PP2-45", "migrato": false, "stato": "used", "note": "" },
     { "id": "RETE-46", "numeroLogico": 46, "gruppo": "rete", "destinazione": "KC868 A32 primo piano MASTER", "patchPanel": "pp2", "portaFisica": 46, "posizioneOriginale": "PP2-46", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-01", "numeroLogico": 1, "gruppo": "telecamere", "destinazione": "TLC Cancello", "patchPanel": "pp-tlc", "portaFisica": 1, "posizioneOriginale": "PP-TLC-01", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-02", "numeroLogico": 2, "gruppo": "telecamere", "destinazione": "TLC Balcone SUD", "patchPanel": "pp-tlc", "portaFisica": 2, "posizioneOriginale": "PP-TLC-02", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-03", "numeroLogico": 3, "gruppo": "telecamere", "destinazione": "TLC piano terra EST", "patchPanel": "pp-tlc", "portaFisica": 3, "posizioneOriginale": "PP-TLC-03", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-04", "numeroLogico": 4, "gruppo": "telecamere", "destinazione": "TLC Balcone OVEST", "patchPanel": "pp-tlc", "portaFisica": 4, "posizioneOriginale": "PP-TLC-04", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-05", "numeroLogico": 5, "gruppo": "telecamere", "destinazione": "TLC Primo piano EST", "patchPanel": "pp-tlc", "portaFisica": 5, "posizioneOriginale": "PP-TLC-05", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-06", "numeroLogico": 6, "gruppo": "telecamere", "destinazione": "TLC piano terra OVEST", "patchPanel": "pp-tlc", "portaFisica": 6, "posizioneOriginale": "PP-TLC-06", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-07", "numeroLogico": 7, "gruppo": "telecamere", "destinazione": "TLC piano terra NORD", "patchPanel": "pp-tlc", "portaFisica": 7, "posizioneOriginale": "PP-TLC-07", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-08", "numeroLogico": 8, "gruppo": "telecamere", "destinazione": "TLC Veranda SUD", "patchPanel": "pp-tlc", "portaFisica": 8, "posizioneOriginale": "PP-TLC-08", "migrato": false, "stato": "used", "note": "" },
-    { "id": "TLC-09", "numeroLogico": 9, "gruppo": "telecamere", "destinazione": "Monitor piano terra NVR", "patchPanel": "pp-tlc", "portaFisica": 9, "posizioneOriginale": "PP-TLC-09", "migrato": false, "stato": "used", "note": "" }
+    { "id": "TLC-01", "numeroLogico": 1, "gruppo": "telecamere", "destinazione": "TLC Lato corte cancello", "patchPanel": "pp-tlc", "portaFisica": 1, "posizioneOriginale": "PP-TLC-01", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-02", "numeroLogico": 2, "gruppo": "telecamere", "destinazione": "TLC Balcone sud", "patchPanel": "pp-tlc", "portaFisica": 2, "posizioneOriginale": "PP-TLC-02", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-03", "numeroLogico": 3, "gruppo": "telecamere", "destinazione": "TLC Lato est", "patchPanel": "pp-tlc", "portaFisica": 3, "posizioneOriginale": "PP-TLC-03", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-04", "numeroLogico": 4, "gruppo": "telecamere", "destinazione": "TLC Balcone ovest", "patchPanel": "pp-tlc", "portaFisica": 4, "posizioneOriginale": "PP-TLC-04", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-05", "numeroLogico": 5, "gruppo": "telecamere", "destinazione": "TLC Lato corte est", "patchPanel": "pp-tlc", "portaFisica": 5, "posizioneOriginale": "PP-TLC-05", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-06", "numeroLogico": 6, "gruppo": "telecamere", "destinazione": "TLC Lato ovest", "patchPanel": "pp-tlc", "portaFisica": 6, "posizioneOriginale": "PP-TLC-06", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-07", "numeroLogico": 7, "gruppo": "telecamere", "destinazione": "TLC Lato nord", "patchPanel": "pp-tlc", "portaFisica": 7, "posizioneOriginale": "PP-TLC-07", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-08", "numeroLogico": 8, "gruppo": "telecamere", "destinazione": "TLC Veranda", "patchPanel": "pp-tlc", "portaFisica": 8, "posizioneOriginale": "PP-TLC-08", "migrato": false, "stato": "used", "note": "" },
+    { "id": "TLC-09", "numeroLogico": 9, "gruppo": "telecamere", "destinazione": "Monitor PT", "patchPanel": "pp-tlc", "portaFisica": 9, "posizioneOriginale": "PP-TLC-09", "migrato": false, "stato": "used", "note": "" }
   ],
   "connessioni": [],
   "collegamentiEsterni": []
